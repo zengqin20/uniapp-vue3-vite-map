@@ -1,0 +1,1 @@
+- src/wxcomponents 下将 node_modules 中的@vant 复制进去

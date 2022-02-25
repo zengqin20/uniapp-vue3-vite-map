@@ -1,4 +1,4 @@
 {
     "editor.formatOnSave": true,
-    "vetur.format.options.tabSize": 4,
+    "vetur.format.options.tabSize": 2,
 }
