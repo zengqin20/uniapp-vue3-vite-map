@@ -14,5 +14,8 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'vue/multi-word-component-names': 'off',
     'import/prefer-default-export': 'off',
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'no-unused-vars': 'off',
   },
 }

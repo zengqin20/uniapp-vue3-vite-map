@@ -1,15 +1,21 @@
 <template>
   <view class="content">
     <view class="text-area">
-      <text class="title">{{ title }}</text>
+      <text class="title">1221{{ title }}</text>
     </view>
-    <text>sadasdsdads12312312</text>
+    <text>{{ a }}</text>
     <van-button type="primary">测试</van-button>
   </view>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+import { useUserStore } from '@/store/user.js'
+
+const useStore = useUserStore()
+const a = computed(() => useStore.a)
+// 调用action
+Promise.resolve(useStore.setAsync(9)).then(res => console.log(a))
 
 const title = ref('hello')
 </script>

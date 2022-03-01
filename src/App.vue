@@ -2,7 +2,6 @@
   <div></div>
 </template>
 <script setup>
-/* eslint-disable */
 function onLaunch() {
   console.log('App Launch')
 }
@@ -14,7 +13,6 @@ function onShow() {
 function onHide() {
   console.log('App Hide')
 }
-/* eslint-disable */
 </script>
 
 <style>
