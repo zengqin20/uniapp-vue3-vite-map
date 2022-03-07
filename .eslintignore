@@ -1,4 +1,4 @@
 node_modules
-src/assets
+src/assets/**
 src/wxcomponents
 dist

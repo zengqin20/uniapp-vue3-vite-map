@@ -1,0 +1,16 @@
+{
+  "id": "3227241",
+  "name": "weixin",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "25551842",
+      "name": "路线1",
+      "font_class": "route1",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    }
+  ]
+}

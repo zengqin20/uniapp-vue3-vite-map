@@ -4,16 +4,24 @@
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
+			},
+			"options":{
+				"styleIsolation": "shared",
 			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8",
+		"navigationBarTitleText": "易出行",
+		"navigationBarBackgroundColor": "#ff6647",
+		"backgroundColor": "#ff6647",
 		"usingComponents": {
-			"van-button": "./wxcomponents/@vant/weapp/dist/button/index"
+			"van-button": "./wxcomponents/@vant/weapp/dist/button/index",
+			"van-field": "./wxcomponents/@vant/weapp/dist/field/index",
+			"van-search": "./wxcomponents/@vant/weapp/dist/search/index",
+			"van-row": "./wxcomponents/@vant/weapp/dist/row/index",
+			  "van-col": "./wxcomponents/@vant/weapp/dist/col/index",
+			  "van-icon": "./wxcomponents/@vant/weapp/dist/icon/index"
 		}
 	}
 }

@@ -1,40 +1,101 @@
 <template>
-  <view class="content">
-    <view class="text-area">
-      <text class="title">1221{{ title }}</text>
+  <view class="content flex-center">
+    <view class="search">
+      <view class="search-content">
+        <van-search
+          :value="searchContent"
+          use-action-slot
+          placeholder="查找目的地、公交"
+          @change="searchChange"
+          @search="handleSearch"
+        />
+      </view>
     </view>
-    <text>{{ a }}</text>
-    <van-button type="primary">测试</van-button>
+    <view class="modules">
+      <view class="module-content flex-center">
+        <text class="iconfont icon-route1 module-icon"></text>
+        <text class="module-text">常用路线</text>
+      </view>
+
+      <view class="module-content flex-center">
+        <text class="iconfont icon-route1 module-icon"></text>
+        <text class="module-text">一键回家</text>
+      </view>
+    </view>
   </view>
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
-import { useUserStore } from '@/store/user.js'
+import { ref } from 'vue'
 
-const useStore = useUserStore()
-const a = computed(() => useStore.a)
-// 调用action
-Promise.resolve(useStore.setAsync(9)).then(res => console.log(a))
+const searchContent = ref('')
 
-const title = ref('hello')
+const handleSearch = val => {
+  console.log(searchContent.value)
+}
+
+const searchChange = e => {
+  searchContent.value = e.detail
+}
 </script>
 
-<style>
-.content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.text-area {
+<style lang="less">
+.search {
+  font-size: 20px;
+  width: 100%;
+  padding-bottom: 24px;
+  padding-top: 32px;
   display: flex;
   justify-content: center;
+  background-image: linear-gradient(#ff6647, #f09819, #fff);
+}
+//ff512f
+
+.search-content {
+  width: 92%;
+
+  &:deep(.van-search) {
+    border-radius: 12px;
+    padding: 4px 6px;
+    .van-search__content {
+      background-color: #ffffff;
+    }
+  }
+
+  &:deep(.van-field__body) {
+    height: 44px;
+    .van-field__control {
+      font-size: 24px;
+      height: 38px;
+      line-height: 38px;
+    }
+  }
+  &:deep(.field-index--van-field) {
+    align-items: center;
+    .cell-index--van-cell__left-icon {
+      font-size: 24px;
+    }
+  }
 }
 
-.title {
-  font-size: 36rpx;
-  color: #8f8f94;
+.modules {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+
+  .module-content {
+    width: 40vw;
+    height: 40vw;
+    background-color: #ff6647;
+    color: #ffffff;
+    border-radius: 12px;
+    justify-content: space-evenly;
+    .module-icon {
+      font-size: 18vw;
+    }
+    .module-text {
+      font-size: 8vw;
+    }
+  }
 }
 </style>

@@ -17,4 +17,14 @@ export default defineConfig({
       },
     ],
   },
+  // 开启less支持
+  css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+        // 引入全局less
+        additionalData: `@import "${path.resolve(__dirname, 'src/style/common.less')}";`,
+      },
+    },
+  },
 })
