@@ -22,6 +22,12 @@
         <text class="module-text">一键回家</text>
       </view>
     </view>
+
+    <view class="beside" @click="handleBeside">
+      <text class="beside-text"> 附近公交</text>
+      <text v-if="!isMessage" class="iconfont icon-xiala down-icon"></text>
+      <text v-else class="iconfont icon-xiangshang1 up-icon"></text>
+    </view>
   </view>
 </template>
 
@@ -29,6 +35,7 @@
 import { ref } from 'vue'
 
 const searchContent = ref('')
+const isMessage = ref(false)
 
 const handleSearch = val => {
   console.log(searchContent.value)
@@ -37,9 +44,16 @@ const handleSearch = val => {
 const searchChange = e => {
   searchContent.value = e.detail
 }
+
+const handleBeside = () => {
+  isMessage.value = !isMessage.value
+}
 </script>
 
 <style lang="less">
+page {
+  background-color: #f1f1f1;
+}
 .search {
   font-size: 20px;
   width: 100%;
@@ -47,7 +61,7 @@ const searchChange = e => {
   padding-top: 32px;
   display: flex;
   justify-content: center;
-  background-image: linear-gradient(#ff6647, #f09819, #fff);
+  background-image: linear-gradient(#ff6647, #f09819, #f1f1f1);
 }
 //ff512f
 
@@ -63,11 +77,11 @@ const searchChange = e => {
   }
 
   &:deep(.van-field__body) {
-    height: 44px;
+    height: 15vw;
+    line-height: 15vw;
     .van-field__control {
-      font-size: 24px;
-      height: 38px;
-      line-height: 38px;
+      font-size: 8vw;
+      height: 8vw;
     }
   }
   &:deep(.field-index--van-field) {
@@ -82,12 +96,12 @@ const searchChange = e => {
   width: 92%;
   display: flex;
   justify-content: space-between;
+  color: #ffffff;
 
   .module-content {
     width: 40vw;
     height: 40vw;
     background-color: #ff6647;
-    color: #ffffff;
     border-radius: 12px;
     justify-content: space-evenly;
     .module-icon {
@@ -96,6 +110,29 @@ const searchChange = e => {
     .module-text {
       font-size: 8vw;
     }
+  }
+}
+.beside {
+  width: 92%;
+  display: flex;
+  margin-top: 24px;
+  border: 1px solid #efc5c5;
+  border-radius: 12px;
+  justify-content: center;
+  height: 15vw;
+  line-height: 15vw;
+  background-color: #fff;
+  padding: 8px 0;
+  .beside-text {
+    font-size: 8vw;
+    margin-right: 12px;
+  }
+
+  .up-icon {
+    font-size: 8vw;
+  }
+  .down-icon {
+    font-size: 10vw;
   }
 }
 </style>
