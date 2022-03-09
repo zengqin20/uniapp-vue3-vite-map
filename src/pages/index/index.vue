@@ -23,7 +23,7 @@
       </view>
     </view>
 
-    <view class="beside" @click="handleBeside">
+    <view class="beside" @click="handleBesideBus">
       <text class="beside-text"> 附近公交</text>
       <text v-if="!isMessage" class="iconfont icon-xiala down-icon"></text>
       <text v-else class="iconfont icon-xiangshang1 up-icon"></text>
@@ -45,8 +45,11 @@ const searchChange = e => {
   searchContent.value = e.detail
 }
 
-const handleBeside = () => {
+const handleBesideBus = () => {
   isMessage.value = !isMessage.value
+  console.log(isMessage.value)
+  if (isMessage.value === false) return
+  console.log(isMessage)
 }
 </script>
 
