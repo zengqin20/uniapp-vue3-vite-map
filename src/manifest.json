@@ -58,6 +58,12 @@
             "scope.userLocation":{
                 "desc": "您的位置信息将用于小程序接口展示"
             }
+        },
+        "plugins":{
+            "WechatSI":{
+                "version":"0.3.3",
+                "provider":"wx069ba97219f66d99"
+            }
         }
     },
     "mp-alipay" : {

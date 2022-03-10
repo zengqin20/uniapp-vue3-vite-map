@@ -6,8 +6,7 @@
           :value="searchContent"
           use-action-slot
           placeholder="查找目的地、公交"
-          @change="searchChange"
-          @search="handleSearch"
+          @focus="handleSearch"
         />
       </view>
     </view>
@@ -34,15 +33,12 @@
 <script setup>
 import { ref } from 'vue'
 
-const searchContent = ref('')
 const isMessage = ref(false)
 
 const handleSearch = val => {
-  console.log(searchContent.value)
-}
-
-const searchChange = e => {
-  searchContent.value = e.detail
+  uni.navigateTo({
+    url: `./search`,
+  })
 }
 
 const handleBesideBus = () => {

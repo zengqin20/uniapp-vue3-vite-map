@@ -1,9 +1,18 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/index/index",
+			"path": "pages/oldOwner/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "首页"
+			},
+			"options":{
+				"styleIsolation": "shared",
+			}
+		},
+		{
+			"path":"pages/oldOwner/search",
+			"style": {
+				"navigationBarTitleText": "搜索"
 			},
 			"options":{
 				"styleIsolation": "shared",
