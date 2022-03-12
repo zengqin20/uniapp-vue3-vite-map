@@ -27,4 +27,16 @@ export default defineConfig({
       },
     },
   },
+  // 服务器
+  server: {
+    host: '0.0.0.0',
+    port: 3000,
+  },
+  // 设置反向代理
+  proxy: {
+    '/api': {
+      target: 'http://localhost:3000',
+      changeOrigin: true,
+    },
+  },
 })

@@ -32,6 +32,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { api, getApi } from '@/request/index.js'
 
 const isMessage = ref(false)
 
@@ -45,7 +46,12 @@ const handleBesideBus = () => {
   isMessage.value = !isMessage.value
   console.log(isMessage.value)
   if (isMessage.value === false) return
-  console.log(isMessage)
+
+  getApi(api.beside, {
+    id: 1,
+  }).then(res => {
+    console.log(res.data)
+  })
 }
 </script>
 
