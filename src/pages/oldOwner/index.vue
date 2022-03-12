@@ -32,13 +32,27 @@
 
 <script setup>
 import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { api, getApi } from '@/request/index.js'
 
 const isMessage = ref(false)
+const lng = ref(null)
+const lat = ref(null)
 
 const handleSearch = val => {
   uni.navigateTo({
     url: `./search`,
+  })
+}
+
+const getLocation = async () => {
+  await uni.getLocation({
+    type: 'gcj02',
+    gecode: true,
+    success: res => {
+      lng.value = res.longitude
+      lat.value = res.latitude
+    },
   })
 }
 
@@ -47,10 +61,13 @@ const handleBesideBus = () => {
   console.log(isMessage.value)
   if (isMessage.value === false) return
 
-  getApi(api.beside, {
-    id: 1,
-  }).then(res => {
-    console.log(res.data)
+  getLocation().then(() => {
+    getApi(api.beside, {
+      lat: lat.value,
+      lng: lng.value,
+    }).then(res => {
+      console.log(res.data)
+    })
   })
 }
 </script>

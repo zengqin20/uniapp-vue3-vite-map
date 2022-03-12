@@ -26,7 +26,6 @@ export const getApi = (url, data, options = {}) => {
 }
 
 export const postApi = (url, data, options = {}) => {
-  const opt = options
   options.type = 'POST'
   options.data = data
   options.url = url
