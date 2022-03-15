@@ -19,5 +19,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-undef': 'off',
     'no-param-reassign': 'off',
+    'vue/no-multiple-template-root': 'off',
+    'vue/valid-v-for': 'off',
   },
 }

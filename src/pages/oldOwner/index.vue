@@ -22,27 +22,53 @@
       </view>
     </view>
 
-    <view class="beside" @click="handleBesideBus">
+    <view class="beside" @click="handleMessage" v-if="visible">
       <text class="beside-text"> 附近公交</text>
       <text v-if="!isMessage" class="iconfont icon-xiala down-icon"></text>
       <text v-else class="iconfont icon-xiangshang1 up-icon"></text>
+    </view>
+
+    <view class="buses" v-if="isMessage">
+      <bus-message :source-data="busData" :visible="isMessage"></bus-message>
     </view>
   </view>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { api, getApi } from '@/request/index.js'
+import busMessage from '@/components/busMessage'
 
 const isMessage = ref(false)
 const lng = ref(null)
 const lat = ref(null)
+const busData = ref([])
+const visible = ref(false)
+
+const handleBesideBus = () => {
+  // 获取附近公交信息
+  getApi(api.beside, {
+    lat: lat.value,
+    lng: lng.value,
+  }).then(res => {
+    busData.value = res.data
+    console.log(busData.value)
+
+    console.log(res.data)
+    visible.value = Boolean(busData.value.length)
+  })
+}
 
 const handleSearch = val => {
   uni.navigateTo({
     url: `./search`,
   })
+}
+
+const handleMessage = val => {
+  isMessage.value = !isMessage.value
+  handleBesideBus()
 }
 
 const getLocation = async () => {
@@ -56,23 +82,25 @@ const getLocation = async () => {
   })
 }
 
-const handleBesideBus = () => {
-  isMessage.value = !isMessage.value
-  console.log(isMessage.value)
-  if (isMessage.value === false) return
+watch(
+  () => lng.value,
+  val => {
+    if (val) {
+      handleBesideBus()
+    }
+  }
+)
 
-  getLocation().then(() => {
-    getApi(api.beside, {
-      lat: lat.value,
-      lng: lng.value,
-    }).then(res => {
-      console.log(res.data)
-    })
-  })
-}
+onMounted(() => {
+  getLocation()
+})
 </script>
 
 <style lang="less">
+.buses {
+  width: 92%;
+  margin-top: 24px;
+}
 page {
   background-color: #f1f1f1;
 }
