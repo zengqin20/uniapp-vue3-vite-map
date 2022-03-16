@@ -11,6 +11,7 @@
         />
       </view>
     </view>
+
     <view class="modules">
       <view class="module-content flex-center" @click="handleVoice">
         <text class="iconfont icon-route1 module-icon"></text>
@@ -30,39 +31,62 @@
       @touchstart="touchStart"
       @touchend="touchEnd"
     ></button>
+
+    <view>
+      <van-overlay :show="isMask" @click="handleHide">
+        <view class="wrapper">
+          <search-message :source-data="keywordArr" :visible="isVisible"></search-message>
+        </view>
+      </van-overlay>
+    </view>
   </view>
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+import { api, getApi } from '@/request/index.js'
+import searchMessage from '@/components/searchMessage'
 
 const searchContent = ref('')
 const isVoice = ref(false)
+const isMask = ref(false)
+const keywordArr = ref([])
+const isVisible = ref(false)
 
 // 语音插件引入
 const plugin = requirePlugin('WechatSI')
 const manager = plugin.getRecordRecognitionManager()
 
+const handleHide = () => {
+  isMask.value = false
+}
+
+const getKeyword = () => {
+  const keyword = searchContent.value || null
+  getApi(api.search, {
+    keyword,
+  }).then(res => {
+    keywordArr.value = res.data
+    isVisible.value = true
+  })
+}
+
 const searchChange = e => {
   searchContent.value = e.detail
+
+  isMask.value = Boolean(searchContent.value)
+  getKeyword()
 }
 
 const handleVoice = () => {
   isVoice.value = true
-  console.log(isVoice.value)
   manager.start({
     duration: 60000,
     lang: 'zh_CN',
   })
 }
-const test = () => {
-  console.log(121)
-}
+const test = () => {}
 
-onLoad(option => {
-  searchContent.value = option.searchvalue
-})
 const handleSearch = () => {}
 </script>
 
@@ -83,7 +107,7 @@ page {
 
 .search-content {
   width: 92%;
-
+  z-index: 2;
   &:deep(.van-search) {
     border-radius: 12px;
     padding: 4px 6px;
@@ -102,7 +126,7 @@ page {
   }
   &:deep(.field-index--van-field) {
     align-items: center;
-    .cell-index--van-cell__left-icon {
+    .cell-indx--van-cell__left-icon {
       font-size: 24px;
     }
   }
@@ -127,6 +151,16 @@ page {
       font-size: 8vw;
     }
   }
+}
+.wrapper {
+  width: 92%;
+  background: white;
+  margin: 0 auto;
+  position: relative;
+  top: 99px;
+  height: 350px;
+  overflow: auto;
+  border-radius: 0 0 12px 12px;
 }
 .voicebtn {
   height: 130upx;

@@ -44,4 +44,5 @@ export const api = {
   login: '/login',
   test: '/test',
   beside: '/beside',
+  search: '/search',
 }

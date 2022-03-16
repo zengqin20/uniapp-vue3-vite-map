@@ -29,8 +29,13 @@
 			"van-field": "./wxcomponents/@vant/weapp/dist/field/index",
 			"van-search": "./wxcomponents/@vant/weapp/dist/search/index",
 			"van-row": "./wxcomponents/@vant/weapp/dist/row/index",
-			  "van-col": "./wxcomponents/@vant/weapp/dist/col/index",
-			  "van-icon": "./wxcomponents/@vant/weapp/dist/icon/index"
+			"van-col": "./wxcomponents/@vant/weapp/dist/col/index",
+            "van-icon": "./wxcomponents/@vant/weapp/dist/icon/index",
+            "van-cell": "./wxcomponents/@vant/weapp/dist/cell/index",
+            "van-cell-group": "./wxcomponents/@vant/weapp/dist/cell-group/index",
+            "van-overlay": "./wxcomponents/@vant/weapp/dist/overlay/index",
+            "van-dropdown-menu": "./wxcomponents/@vant/weapp/dist/dropdown-menu/index",
+            "van-dropdown-item": "./wxcomponents/@vant/weapp/dist/dropdown-item/index"
 		}
 	}
 }

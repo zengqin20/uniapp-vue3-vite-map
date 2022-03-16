@@ -53,9 +53,7 @@ const handleBesideBus = () => {
     lng: lng.value,
   }).then(res => {
     busData.value = res.data
-    console.log(busData.value)
 
-    console.log(res.data)
     visible.value = Boolean(busData.value.length)
   })
 }
