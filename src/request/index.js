@@ -4,7 +4,7 @@ const request = (options = {}) => {
   return new Promise((resolve, reject) => {
     uni
       .request({
-        url: `http://localhost:3000${baseURL}${options.url}` || '',
+        url: `http://localhost:3000${options.url}` || '',
         method: options.type || 'GET',
         data: options.data || {},
         header: options.header || { 'content-type': 'application/json' },
@@ -41,8 +41,8 @@ export const deleteApi = (url, data, options = {}) => {
 
 export const api = {
   // 登录
-  login: '/login',
-  test: '/test',
-  beside: '/beside',
-  search: '/search',
+  login: '/common/login',
+  beside: '/api/beside',
+  search: '/api/search',
+  register: '/common/register',
 }
