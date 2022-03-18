@@ -33,6 +33,7 @@ const getUserInfo = () => {
               if (result.data.token) {
                 // 重新设置token
                 uni.setStorageSync('token', result.data.token)
+                uni.setStorageSync('userType', result.data.type)
                 // 根据不同角色跳转首页
                 const url = result.data.type === 'parent' ? `../oldOwner/index` : ''
                 uni.navigateTo({
@@ -54,22 +55,21 @@ const getUserInfo = () => {
 }
 
 onLaunch(() => {
-  console.log(1)
   // 检查登录状态是否过期
   uni.checkSession({
     success: res => {
-      console.log(2)
-
       // 判断是否有token
       const token = uni.getStorageSync('token')
       if (!token) {
         // 重新获取用户信息
-        console.log(3)
-        uni.navigateTo({
-          url: `./config`,
-        })
-      } else {
         getUserInfo()
+      } else {
+        // 进入页面
+        const type = uni.getStorageSync('userType')
+
+        uni.navigateTo({
+          url: type === 'parent' ? `../oldOwner/index` : '',
+        })
       }
     },
     fail: err => {
