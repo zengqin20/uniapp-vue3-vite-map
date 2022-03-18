@@ -16,7 +16,9 @@
             "delay" : 0
         },
         /* 模块配置 */
-        "modules" : {},
+        "modules" : {
+            "oAuth":"weixin"
+        },
         /* 应用发布信息 */
         "distribute" : {
             /* android打包配置 */
@@ -57,7 +59,14 @@
         "permission":{
             "scope.userLocation":{
                 "desc": "您的位置信息将用于小程序接口展示"
+            },
+            "scope.userInfo":{
+                "desc":"您"
+            },
+            "scope.record":{
+                "desc":""
             }
+
         },
         "plugins":{
             "WechatSI":{
