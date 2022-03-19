@@ -2,6 +2,7 @@ import { baseURL } from '@/utils/common'
 
 const request = (options = {}) => {
   return new Promise((resolve, reject) => {
+    // 真机调试 192.168.31.21
     uni
       .request({
         url: `http://localhost:3000${options.url}` || '',
