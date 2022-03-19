@@ -46,4 +46,5 @@ export const api = {
   beside: '/api/beside',
   search: '/api/search',
   register: '/common/register',
+  cityMessage: '/api/citymessage',
 }

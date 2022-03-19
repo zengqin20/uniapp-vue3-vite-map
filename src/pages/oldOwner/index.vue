@@ -36,9 +36,13 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue'
-import { onLoad } from '@dcloudio/uni-app'
+// import { onLoad } from '@dcloudio/uni-app'
 import { api, getApi } from '@/request/index.js'
 import busMessage from '@/components/busMessage'
+import { useLocationStore } from '@/store/location.js'
+
+// pinia
+const locationStore = useLocationStore()
 
 const isMessage = ref(false)
 const lng = ref(null)
@@ -55,6 +59,16 @@ const handleBesideBus = () => {
     busData.value = res.data
 
     visible.value = Boolean(busData.value.length)
+  })
+}
+
+const getCityMessage = () => {
+  getApi(api.cityMessage, {
+    lat: lat.value,
+    lng: lng.value,
+  }).then(res => {
+    // 获取当前城市信息 并且更改pinia
+    locationStore.city = res.data.city
   })
 }
 
@@ -84,10 +98,18 @@ watch(
   () => lng.value,
   val => {
     if (val) {
+      // 获取附近公交信息
       handleBesideBus()
+
+      // 异步获取城市信息
+      locationStore.setCity(lat.value, lng.value)
     }
   }
 )
+// 监听变化
+locationStore.$subscribe((mutation, state) => {
+  console.log(state)
+})
 
 onMounted(() => {
   getLocation()
