@@ -83,7 +83,20 @@ const searchChange = e => {
   getKeyword()
 }
 
-const handleSearch = () => {}
+const handleSearch = () => {
+  // 获取目标地点经纬度
+
+  const data = {
+    // 终点
+    name: '七一广场',
+    latitude: 30.821002,
+    longitude: 104.173484,
+  }
+
+  uni.navigateTo({
+    url: `./route?endPoint=${JSON.stringify(data)}`,
+  })
+}
 </script>
 
 <style lang="less">

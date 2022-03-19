@@ -58,7 +58,7 @@
         "usingComponents" : true,
         "permission":{
             "scope.userLocation":{
-                "desc": "您的位置信息将用于小程序接口展示"
+                "desc": "您的位置信息将用于小程序定位"
             },
             // "scope.userInfo":{
             //     "desc":"您"
@@ -72,7 +72,11 @@
             "WechatSI":{
                 "version":"0.3.3",
                 "provider":"wx069ba97219f66d99"
-            }
+            },
+             "routePlan": {
+                "version": "1.0.19",
+                "provider": "wx50b5593e81dd937a"
+             }
         }
     },
     "mp-alipay" : {
