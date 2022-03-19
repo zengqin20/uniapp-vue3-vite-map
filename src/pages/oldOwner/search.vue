@@ -4,7 +4,6 @@
       <view class="search-content">
         <van-search
           :value="searchContent"
-          use-action-slot
           placeholder="查找目的地、公交"
           @change="searchChange"
           @search="handleSearch"
@@ -24,14 +23,6 @@
       </view>
     </view>
 
-    <button
-      v-if="isVoice"
-      class="voicebtn"
-      @longtap="test"
-      @touchstart="touchStart"
-      @touchend="touchEnd"
-    ></button>
-
     <view>
       <van-overlay :show="isMask" @click="handleHide">
         <view class="wrapper">
@@ -39,6 +30,8 @@
         </view>
       </van-overlay>
     </view>
+
+    <view><record-text :visible="recordVisible" @ok="handleRecord"></record-text></view>
   </view>
 </template>
 
@@ -46,19 +39,31 @@
 import { ref, onMounted } from 'vue'
 import { api, getApi } from '@/request/index.js'
 import searchMessage from '@/components/searchMessage'
+import recordText from '@/components/recordText'
 
 const searchContent = ref('')
-const isVoice = ref(false)
 const isMask = ref(false)
 const keywordArr = ref([])
 const isVisible = ref(false)
-
-// 语音插件引入
-const plugin = requirePlugin('WechatSI')
-const manager = plugin.getRecordRecognitionManager()
+const recordVisible = ref(false)
 
 const handleHide = () => {
   isMask.value = false
+}
+
+// 语音识别内容 回填数据
+const handleRecord = val => {
+  searchContent.value = val
+}
+
+// 获取权限
+const handleVoice = () => {
+  uni.authorize({
+    scope: 'scope.record',
+    success: res => {
+      recordVisible.value = true
+    },
+  })
 }
 
 const getKeyword = () => {
@@ -77,15 +82,6 @@ const searchChange = e => {
   isMask.value = Boolean(searchContent.value)
   getKeyword()
 }
-
-const handleVoice = () => {
-  isVoice.value = true
-  manager.start({
-    duration: 60000,
-    lang: 'zh_CN',
-  })
-}
-const test = () => {}
 
 const handleSearch = () => {}
 </script>
@@ -162,18 +158,7 @@ page {
   overflow: auto;
   border-radius: 0 0 12px 12px;
 }
-.voicebtn {
-  height: 130upx;
-  display: block;
-  width: 130upx;
-  line-height: 130upx;
-  border-radius: 65upx;
-  font-size: 50upx;
-  position: absolute;
-  top: 1060upx;
-  left: 310upx;
-  background-color: #ff6647;
-}
+
 // .voicepad {
 //   height: 250upx;
 //   width: 680upx;
