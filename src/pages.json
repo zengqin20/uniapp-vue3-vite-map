@@ -32,25 +32,16 @@
 			"style": {
 				"navigationBarTitleText": "搜索"
             },
-            
+            // "mp-weixin": {
+			// 		"usingComponents": {
+			// 			"routePlan": "plugin://routePlan/index"
+			// 		}
+			// 	},
 			"options":{
 				"styleIsolation": "shared",
 			}
-        },
-        {
-			"path":"pages/oldOwner/route",
-			"style": {
-				"navigationBarTitleText": "路线规划"
-            },
-            "mp-weixin": {
-					"usingComponents": {
-						"routePlan": "plugin://routePlan/index"
-					}
-				},
-			"options":{
-				"styleIsolation": "shared",
-			} 
-		}
+        }
+        
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
