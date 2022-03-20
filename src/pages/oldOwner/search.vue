@@ -26,7 +26,7 @@
     <view>
       <van-overlay :show="isMask" @click="handleHide">
         <view class="wrapper">
-          <search-message :source-data="keywordArr" :visible="isVisible"></search-message>
+          <search-message :source-data="keywordArr"></search-message>
         </view>
       </van-overlay>
     </view>
@@ -41,11 +41,11 @@ import { api, getApi, postApi } from '@/request/index.js'
 import searchMessage from '@/components/searchMessage'
 import recordText from '@/components/recordText'
 import { useLocationStore } from '@/store/location.js'
+import { handleRoute } from '@/utils/common'
 
 const searchContent = ref('')
 const isMask = ref(false)
 const keywordArr = ref([])
-const isVisible = ref(false)
 const recordVisible = ref(false)
 
 // pinia
@@ -77,7 +77,6 @@ const getKeyword = () => {
     region: locationStore.city,
   }).then(res => {
     keywordArr.value = res.data
-    isVisible.value = true
   })
 }
 
@@ -89,18 +88,10 @@ const searchChange = e => {
 }
 
 const handleSearch = () => {
-  // 获取目标地点经纬度
+  // 获取第一目标地点
+  const address = keywordArr.value[0]
 
-  const data = {
-    // 终点
-    name: '七一广场',
-    latitude: 30.821002,
-    longitude: 104.173484,
-  }
-
-  uni.navigateTo({
-    url: `./route?endPoint=${JSON.stringify(data)}`,
-  })
+  handleRoute(data)
 }
 </script>
 
