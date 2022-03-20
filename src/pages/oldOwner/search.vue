@@ -37,15 +37,19 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { api, getApi } from '@/request/index.js'
+import { api, getApi, postApi } from '@/request/index.js'
 import searchMessage from '@/components/searchMessage'
 import recordText from '@/components/recordText'
+import { useLocationStore } from '@/store/location.js'
 
 const searchContent = ref('')
 const isMask = ref(false)
 const keywordArr = ref([])
 const isVisible = ref(false)
 const recordVisible = ref(false)
+
+// pinia
+const locationStore = useLocationStore()
 
 const handleHide = () => {
   isMask.value = false
@@ -68,8 +72,9 @@ const handleVoice = () => {
 
 const getKeyword = () => {
   const keyword = searchContent.value || null
-  getApi(api.search, {
+  postApi(api.search, {
     keyword,
+    region: locationStore.city,
   }).then(res => {
     keywordArr.value = res.data
     isVisible.value = true
