@@ -13,12 +13,12 @@
 
     <view class="modules">
       <view class="module-content flex-center" @click="handleVoice">
-        <text class="iconfont icon-route1 module-icon"></text>
+        <text class="iconfont icon-yuyin module-icon"></text>
         <text class="module-text">语音输入</text>
       </view>
 
       <view class="module-content flex-center">
-        <text class="iconfont icon-route1 module-icon"></text>
+        <text class="iconfont icon-31erweima module-icon"></text>
         <text class="module-text">二维码</text>
       </view>
     </view>

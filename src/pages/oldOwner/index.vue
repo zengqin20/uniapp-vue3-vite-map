@@ -17,7 +17,7 @@
       </view>
 
       <view class="module-content flex-center">
-        <text class="iconfont icon-route1 module-icon"></text>
+        <text class="iconfont .icon-yangshi_icon_tongyong_home module-icon"></text>
         <text class="module-text">一键回家</text>
       </view>
     </view>

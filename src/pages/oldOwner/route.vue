@@ -1,12 +1,13 @@
 <template>
   <view class="content flex-center">
-    <view class="no-route">
-      <van-button type="primary" size="large" class="add-button">添加常用路线</van-button>
+    <view class="add-route">
+      <text class="iconfont icon-tianjia"></text>
+      <text class="add-text"> 添加常用路线</text>
+    </view>
 
-      <view class="text" v-if="isRouteMessage">
-        <text class="iconfont icon-xiala"></text>
-        <text class="text-info">您还未添加任何路线</text>
-      </view>
+    <view class="text" v-if="isRouteMessage">
+      <text class="iconfont icon-meiyoushuju"></text>
+      <text class="text-info">您还未添加任何路线</text>
     </view>
   </view>
 </template>
@@ -28,21 +29,25 @@ onMounted(() => {
 <style lang="less">
 page {
   background-color: #f1f1f1;
+  color: #1d0f0c;
 }
-.no-route {
+.add-route {
   width: 92%;
-  margin-top: 32px;
-  &:deep(.van-button) {
-    background: #fff;
-    color: black;
-    border-radius: 12px;
-    border-color: 1px solid black;
-    font-size: 8vw;
-    .van-button_text {
-      height: 8vw;
-      font-size: 8vw;
-      line-height: 8vw;
-    }
+  display: flex;
+  margin-top: 36px;
+  border: 1px solid #d89292;
+  border-radius: 12px;
+  justify-content: center;
+  height: 12vw;
+  line-height: 12vw;
+  background-color: #fff;
+  padding: 8px 0;
+  .icon-tianjia {
+    font-size: 9vw;
+    padding-top: 2px;
+  }
+  .add-text {
+    font-size: 7vw;
   }
 }
 .text {
@@ -50,8 +55,9 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .icon-font {
-    font-size: 16vw;
+  .icon-meiyoushuju {
+    font-size: 32vw;
+    margin-bottom: 24px;
   }
   .text-info {
     font-size: 6vw;
