@@ -94,8 +94,14 @@ const getLocation = async () => {
     type: 'gcj02',
     gecode: true,
     success: res => {
-      lng.value = res.longitude
-      lat.value = res.latitude
+      const { longitude, latitude } = res
+      lng.value = longitude
+      lat.value = latitude
+
+      locationStore.location = {
+        longitude,
+        latitude,
+      }
     },
   })
 }

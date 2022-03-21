@@ -5,6 +5,7 @@ export const useLocationStore = defineStore('location', {
   state: () => {
     return {
       city: '',
+      location: {},
     }
   },
   getters: {},
