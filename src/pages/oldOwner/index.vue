@@ -11,7 +11,7 @@
       </view>
     </view>
     <view class="modules">
-      <view class="module-content flex-center">
+      <view class="module-content flex-center" @click="handleCommon">
         <text class="iconfont icon-route1 module-icon"></text>
         <text class="module-text">常用路线</text>
       </view>
@@ -49,6 +49,12 @@ const lng = ref(null)
 const lat = ref(null)
 const busData = ref([])
 const visible = ref(false)
+
+const handleCommon = () => {
+  uni.navigateTo({
+    url: `./route`,
+  })
+}
 
 const handleBesideBus = () => {
   // 获取附近公交信息

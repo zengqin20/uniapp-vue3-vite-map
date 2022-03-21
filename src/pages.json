@@ -40,6 +40,15 @@
 			"options":{
 				"styleIsolation": "shared",
 			}
+        },
+        	{
+			"path":"pages/oldOwner/route",
+			"style": {
+				"navigationBarTitleText": "常用路线"
+            },
+			"options":{
+				"styleIsolation": "shared",
+			}
         }
         
 	],

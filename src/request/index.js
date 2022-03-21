@@ -47,4 +47,5 @@ export const api = {
   search: '/api/search',
   register: '/common/register',
   cityMessage: '/api/citymessage',
+  commonRoute: '/api/commonroute',
 }
