@@ -74,7 +74,7 @@ const getKeyword = () => {
   const keyword = searchContent.value || null
   postApi(api.search, {
     keyword,
-    region: locationStore.city,
+    region: locationStore.city.match(/(?<=省).+市/g)[0],
   }).then(res => {
     keywordArr.value = res.data
   })
