@@ -15,12 +15,26 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  eventType: {
+    type: String,
+    default: 'route',
+  },
 })
+
+const emit = defineEmits(['ok'])
+
+const handleEvent = address => {
+  const type = props.eventType
+  if (type === 'route') {
+    handleRoute(address)
+  } else if (type === 'address') {
+    emit('ok', address)
+  }
+}
 
 const handleClick = e => {
   const address = props.sourceData[Number(e.currentTarget.id)]
-
-  handleRoute(address)
+  handleEvent(address)
 }
 </script>
 

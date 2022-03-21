@@ -52,7 +52,7 @@ const visible = ref(false)
 
 const handleCommon = () => {
   uni.navigateTo({
-    url: `./route`,
+    url: `./route/index`,
   })
 }
 
@@ -119,9 +119,9 @@ watch(
   }
 )
 // 监听变化
-locationStore.$subscribe((mutation, state) => {
-  console.log(state)
-})
+// locationStore.$subscribe((mutation, state) => {
+//   console.log(state)
+// })
 
 onMounted(() => {
   getLocation()

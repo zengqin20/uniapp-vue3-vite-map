@@ -91,7 +91,7 @@ const handleSearch = () => {
   // 获取第一目标地点
   const address = keywordArr.value[0]
 
-  handleRoute(data)
+  handleRoute(address)
 }
 </script>
 
