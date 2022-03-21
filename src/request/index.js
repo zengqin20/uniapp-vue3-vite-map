@@ -8,7 +8,10 @@ const request = (options = {}) => {
         url: `http://localhost:3000${options.url}` || '',
         method: options.type || 'GET',
         data: options.data || {},
-        header: options.header || { 'content-type': 'application/json' },
+        header: options.header || {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${uni.getStorageSync('token')}`,
+        },
       })
       .then(data => {
         resolve(data)
