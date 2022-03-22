@@ -1,13 +1,22 @@
 <template>
   <view class="content flex-center">
-    <view class="item">
+    <view class="item zindex">
       <van-cell-group>
-        <van-field :label="label" :value="inputValue" @change="changeValue">
+        <van-field label="地址" :value="inputValue" @change="changeValue">
           <van-button slot="button" size="small" type="primary" @click="handleAuth">
             我的位置
           </van-button>
         </van-field>
       </van-cell-group>
+    </view>
+
+    <view class="item-1">
+      <van-cell-group>
+        <van-field label="名称" :value="nickName" @change="changeName"> </van-field>
+      </van-cell-group>
+    </view>
+    <view class="add-route" @click="handleAddHome">
+      <text class="add-text"> 确定</text>
     </view>
   </view>
   <view>
@@ -25,6 +34,7 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { useLocationStore } from '@/store/location.js'
 import searchMessage from '@/components/searchMessage'
 import { api, postApi } from '@/request/index.js'
@@ -33,14 +43,9 @@ const locationStore = useLocationStore()
 const isMask = ref(false)
 const inputValue = ref('')
 const keywordArr = ref([])
-
-const props = defineProps({
-  label: {
-    type: String,
-    default: () => '起点',
-  },
-})
-
+const nickName = ref('')
+const isEdit = ref(false)
+const deleteData = ref({})
 const handleAddress = data => {
   inputValue.value = data.address
 }
@@ -65,9 +70,46 @@ const changeValue = e => {
   getKeyword()
 }
 
+const changeName = e => {
+  nickName.value = e.detail
+}
+
 const handleAuth = () => {
   inputValue.value = locationStore.city
 }
+
+const handleAddHome = () => {
+  // 更新删除数据
+  if (isEdit.value) {
+    postApi(api.homeDelete, deleteData.value).then(res => {
+      console.log(res)
+    })
+  }
+
+  postApi(api.home, {
+    address: inputValue.value,
+    nickName: nickName.value,
+  }).then(res => {
+    if (res.data.update) {
+      uni.navigateTo({
+        url: `./index`,
+      })
+    }
+  })
+}
+
+// 重新赋值
+onLoad(e => {
+  isEdit.value = false
+  const { name, address } = e
+  if (name) {
+    nickName.value = name
+    inputValue.value = address
+
+    deleteData.value = { nickName: name, address }
+    isEdit.value = true
+  }
+})
 </script>
 
 <style lang="less">
@@ -90,11 +132,35 @@ page {
 .content {
   background-image: linear-gradient(#ff6647, #f09819, #f1f1f1);
 }
+.zindex {
+  z-index: 3;
+}
+.add-route {
+  width: 92%;
+  display: flex;
+  margin-top: 36px;
+  border: 1px solid #d89292;
+  border-radius: 12px;
+  justify-content: center;
+  height: 10vw;
+  line-height: 10vw;
+  background-color: #fff;
+  color: #8c7070;
+  padding: 8px 0;
+  .add-text {
+    font-size: 7vw;
+  }
+}
+.item-1 {
+  &:deep(.van-field__body) {
+    height: 10vw;
+  }
+}
 
-.item {
+.item,
+.item-1 {
   margin: 24px 0;
   width: 92%;
-  z-index: 3;
   background-color: #fff;
 
   &:deep(.field-index--van-field) {

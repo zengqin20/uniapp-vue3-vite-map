@@ -16,8 +16,8 @@
         <text class="module-text">常用路线</text>
       </view>
 
-      <view class="module-content flex-center">
-        <text class="iconfont .icon-yangshi_icon_tongyong_home module-icon"></text>
+      <view class="module-content flex-center" @click="handleHome">
+        <text class="iconfont icon-yangshi_icon_tongyong_home module-icon"></text>
         <text class="module-text">一键回家</text>
       </view>
     </view>
@@ -53,6 +53,12 @@ const visible = ref(false)
 const handleCommon = () => {
   uni.navigateTo({
     url: `./route/index`,
+  })
+}
+
+const handleHome = () => {
+  uni.navigateTo({
+    url: `./home/index`,
   })
 }
 

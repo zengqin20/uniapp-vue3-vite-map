@@ -86,6 +86,7 @@ page {
 }
 .route {
   width: 92%;
+  margin-top: 24px;
   .route-item {
     margin-bottom: 19px;
     display: flex;
