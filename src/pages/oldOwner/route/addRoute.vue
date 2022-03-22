@@ -55,12 +55,20 @@ const handleAddRoute = () => {
     start: inputValue.value,
     end: dstValue.value,
   }).then(res => {
-    console.log(res)
+    if (res.data.update) {
+      uni.navigateTo({
+        url: `./index`,
+      })
+    }
   })
 }
 
 const handleAddress = data => {
-  inputValue.value = data.address
+  if (isStart.value) {
+    inputValue.value = data.address
+  } else {
+    dstValue.value = data.address
+  }
 }
 
 const handleHide = () => {
