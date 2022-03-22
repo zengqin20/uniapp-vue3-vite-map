@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3227241 */
-  src: url('iconfont.woff2?t=1647826265983') format('woff2'),
-       url('iconfont.woff?t=1647826265983') format('woff'),
-       url('iconfont.ttf?t=1647826265983') format('truetype');
+  src: url('iconfont.woff2?t=1647915772804') format('woff2'),
+       url('iconfont.woff?t=1647915772804') format('woff'),
+       url('iconfont.ttf?t=1647915772804') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jiantou_xiangyou:before {
+  content: "\eb08";
 }
 
 .icon-31erweima:before {
