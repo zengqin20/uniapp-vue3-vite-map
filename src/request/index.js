@@ -51,4 +51,6 @@ export const api = {
   register: '/common/register',
   cityMessage: '/api/citymessage',
   commonRoute: '/api/commonroute',
+  home: '/api/home',
+  homeDelete: '/api/homedelete',
 }
