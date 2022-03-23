@@ -81,7 +81,7 @@
         {
 			"path":"pages/child/index",
 			"style": {
-				"navigationBarTitleText": "首页"
+				"navigationBarTitleText": "功能"
             },
 			"options":{
 				"styleIsolation": "shared",
@@ -110,7 +110,8 @@
             "van-radio-group": "./wxcomponents/@vant/weapp/dist/radio-group/index",
             "van-notify":"./wxcomponents/@vant/weapp/dist/notify/index",
              "van-tabbar": "./wxcomponents/@vant/weapp/dist/tabbar/index",
-            "van-tabbar-item": "./wxcomponents/@vant/weapp/dist/tabbar-item/index"
+            "van-tabbar-item": "./wxcomponents/@vant/weapp/dist/tabbar-item/index",
+            "van-tag": "./wxcomponents/@vant/weapp/dist/tag/index"
 		}
 	}
 }

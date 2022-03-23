@@ -12,7 +12,7 @@
       <text class="add-text"> 添加常用路线</text>
     </view>
     <view class="text" v-if="isRouteMessage">
-      <text class="iconfont icon-meiyoushuju"></text>
+      <text class="iconfont .icon-meiyoushuju"></text>
       <text class="text-info">您还未添加任何路线</text>
     </view>
   </view>
