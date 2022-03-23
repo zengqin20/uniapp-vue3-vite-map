@@ -77,6 +77,15 @@
 			"options":{
 				"styleIsolation": "shared",
 			}
+        },
+        {
+			"path":"pages/child/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+            },
+			"options":{
+				"styleIsolation": "shared",
+			}
         }
         
 	],

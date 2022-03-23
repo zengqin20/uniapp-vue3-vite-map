@@ -130,6 +130,7 @@ const handleSubmit = () => {
             api.login,
             {
               code: loginRes.code,
+              type: res.data.sessionType,
             },
             {
               'Content-Type': 'application/x-www-form-urlencoded',
@@ -140,10 +141,11 @@ const handleSubmit = () => {
 
             uni.setStorageSync('openId', result.data.openId)
             if (result.data.token) {
+              console.log('设置token')
               // 设置token
               uni.setStorageSync('token', result.data.token)
               // 根据不同角色跳转首页
-              const url = result.data.type === 'parent' ? '../oldOwner/index' : ''
+              const url = result.data.type === 'parent' ? '../oldOwner/index' : '../child/index'
               uni.navigateTo({
                 url,
               })
