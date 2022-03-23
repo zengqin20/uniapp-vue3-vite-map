@@ -1,9 +1,9 @@
 <template>
   <view class="content flex-center">
-    <history v-if="activeItem === 'history'"></history>
-    <location v-if="activeItem === 'location'"></location>
-    <sync v-if="activeItem === 'sync'"></sync>
-    <bind-parent v-if="activeItem === 'bindparent'"></bind-parent>
+    <history v-if="activeItem === 'history'" style="width: 100%"></history>
+    <location v-if="activeItem === 'location'" style="width: 100%"></location>
+    <sync v-if="activeItem === 'sync'" style="width: 100%"></sync>
+    <bind-parent v-if="activeItem === 'bindparent'" style="width: 100%"></bind-parent>
   </view>
   <van-tabbar :active="activeItem" @change="onChange" active-color="#ff6647">
     <van-tabbar-item name="location" icon="friends-o">实时定位</van-tabbar-item>
@@ -30,7 +30,6 @@ const onChange = e => {
 
 <style lang="less">
 page {
-  background-color: #f1f1f1;
-  color: #fff;
+  color: black;
 }
 </style>

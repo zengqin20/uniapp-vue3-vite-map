@@ -53,4 +53,5 @@ export const api = {
   commonRoute: '/api/commonroute',
   home: '/api/home',
   homeDelete: '/api/homedelete',
+  bindParent: '/child/bind',
 }
