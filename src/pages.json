@@ -108,7 +108,9 @@
             "van-dropdown-item": "./wxcomponents/@vant/weapp/dist/dropdown-item/index",
             "van-radio": "./wxcomponents/@vant/weapp/dist/radio/index",
             "van-radio-group": "./wxcomponents/@vant/weapp/dist/radio-group/index",
-            "van-notify":"./wxcomponents/@vant/weapp/dist/notify/index"
+            "van-notify":"./wxcomponents/@vant/weapp/dist/notify/index",
+             "van-tabbar": "./wxcomponents/@vant/weapp/dist/tabbar/index",
+            "van-tabbar-item": "./wxcomponents/@vant/weapp/dist/tabbar-item/index"
 		}
 	}
 }
