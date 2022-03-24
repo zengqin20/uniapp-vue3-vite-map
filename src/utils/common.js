@@ -1,6 +1,8 @@
 // 定义常量
 export const baseURL = '/api'
 export const ACCESS_TOKEN = 'Access-Token'
+const key = 'X4EBZ-GNV3P-EA6DP-LADBT-H7CTO-VGF4F' // 使用在腾讯位置服务申请的key
+const referer = '银发易出行' // 调用插件的app的名称
 
 // 验证
 export function validatePhone(value) {
@@ -19,10 +21,18 @@ export function handleRoute(address) {
   })
 
   const plugin = requirePlugin('routePlan')
-  const key = 'X4EBZ-GNV3P-EA6DP-LADBT-H7CTO-VGF4F' // 使用在腾讯位置服务申请的key
-  const referer = '银发易出行' // 调用插件的app的名称
 
   uni.navigateTo({
     url: `plugin://routePlan/index?key=${key}&referer=${referer}&endPoint=${endPoint}`,
+  })
+}
+
+export function handleLocation(location) {
+  const chooseLocation = requirePlugin('chooseLocation')
+
+  uni.navigateTo({
+    url: `plugin://chooseLocation/index?key=${key}&referer=${referer}&location=${JSON.stringify(
+      location
+    )}`,
   })
 }

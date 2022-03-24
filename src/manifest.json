@@ -69,13 +69,20 @@
 
         },
         "plugins":{
+            //微信同声传译
             "WechatSI":{
                 "version":"0.3.3",
                 "provider":"wx069ba97219f66d99"
             },
+            //路线规划
              "routePlan": {
                 "version": "1.0.19",
                 "provider": "wx50b5593e81dd937a"
+             },
+            // 位置服务选点
+            "chooseLocation": {
+                "version": "1.0.9",
+                "provider": "wx76a9a06e5b4e693e"
              }
         }
     },

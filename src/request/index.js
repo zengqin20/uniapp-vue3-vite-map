@@ -56,4 +56,5 @@ export const api = {
   bindParent: '/child/bind',
   syncAddress: '/child/sync',
   syncInput: '/api/sync',
+  location: '/child/location',
 }
