@@ -15,9 +15,10 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
 import { api, getApi, postApi } from '@/request/index.js'
 import history from '@/pages/child/history'
-import sync from '@/pages/child/sync'
+import sync from '@/pages/child/sync/index'
 import location from '@/pages/child/location'
 import bindParent from '@/pages/child/bindParent'
 
@@ -26,6 +27,12 @@ const activeItem = ref('location')
 const onChange = e => {
   activeItem.value = e.detail
 }
+
+onLoad(e => {
+  if (e.name) {
+    activeItem.value = e.name
+  }
+})
 </script>
 
 <style lang="less">

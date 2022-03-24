@@ -54,4 +54,5 @@ export const api = {
   home: '/api/home',
   homeDelete: '/api/homedelete',
   bindParent: '/child/bind',
+  syncAddress: '/child/sync',
 }

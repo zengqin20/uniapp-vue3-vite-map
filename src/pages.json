@@ -86,6 +86,15 @@
 			"options":{
 				"styleIsolation": "shared",
 			}
+        },
+        {
+			"path":"pages/child/addAddress",
+			"style": {
+				"navigationBarTitleText": "同步地址"
+            },
+			"options":{
+				"styleIsolation": "shared",
+			}
         }
         
 	],

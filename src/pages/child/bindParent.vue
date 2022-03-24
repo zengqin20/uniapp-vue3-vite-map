@@ -3,7 +3,9 @@
 
   <view v-if="isMessage" class="users">
     <text class="bind-text">已绑定用户</text>
-    <van-tag class="bind-user" size="large" round color="#ff6647">{{ nickName }}</van-tag>
+    <van-tag class="bind-user" size="large" round color="#fff" text-color="#8c7070">{{
+      nickName
+    }}</van-tag>
     <text class="iconfont icon-tianjia"></text>
   </view>
 
@@ -84,7 +86,7 @@ const getInfo = () => {
 
 const handleSubmit = () => {
   if (!phone.value || !userName.value) {
-    Notify({ type: 'primary', message: '请完善基本信息', duration: 3000, background: '#ff6647' })
+    Notify({ type: 'primary', message: '请完善基本信息', duration: 3000, background: '#fff' })
     return
   }
 
@@ -143,7 +145,9 @@ onMounted(() => {
 <style lang="less">
 page {
   width: 100%;
+  background-color: #ffff;
 }
+
 .text {
   display: flex;
   margin: 28px 0;
@@ -153,10 +157,15 @@ page {
     font-size: 35vw;
   }
 }
+.bind-text {
+  color: #8c7070;
+}
 .bottom {
   margin-bottom: 16px;
 }
 .users {
+  background-image: linear-gradient(#ff6647, #f09819, #f1f1f1);
+
   padding: 24px;
   height: 16vw;
   display: flex;
@@ -166,7 +175,7 @@ page {
   }
   .iconfont {
     font-size: 6vw;
-    color: #ff6647;
+    color: #8c7070;
   }
 }
 </style>
