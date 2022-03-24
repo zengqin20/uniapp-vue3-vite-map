@@ -153,6 +153,8 @@ page {
   margin: 28px 0;
   flex-direction: column;
   align-items: center;
+  color: #ff6647;
+
   .iconfont {
     font-size: 35vw;
   }
