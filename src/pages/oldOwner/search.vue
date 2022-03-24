@@ -17,9 +17,9 @@
         <text class="module-text">语音输入</text>
       </view>
 
-      <view class="module-content flex-center">
+      <view class="module-content flex-center" @click="handleSync">
         <text class="iconfont icon-31erweima module-icon"></text>
-        <text class="module-text">二维码</text>
+        <text class="module-text">同步输入</text>
       </view>
     </view>
 
@@ -47,6 +47,8 @@ const searchContent = ref('')
 const isMask = ref(false)
 const keywordArr = ref([])
 const recordVisible = ref(false)
+const lng = ref(null)
+const isSync = ref(false)
 
 // pinia
 const locationStore = useLocationStore()
@@ -88,10 +90,26 @@ const searchChange = e => {
 }
 
 const handleSearch = () => {
-  // 获取第一目标地点
-  const address = keywordArr.value[0]
+  const data = isSync.value ? lng.value : keywordArr.value[0]
 
-  handleRoute(address)
+  handleRoute(data)
+  // 恢复状态
+  isSync.value = false
+}
+
+const handleSync = () => {
+  getApi(api.syncInput).then(res => {
+    const { address, lngLocation: location } = res.data
+    searchContent.value = address
+
+    lng.value = {
+      title: address,
+      address,
+      location,
+    }
+
+    isSync.value = true
+  })
 }
 </script>
 
