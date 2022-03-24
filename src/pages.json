@@ -120,7 +120,9 @@
             "van-notify":"./wxcomponents/@vant/weapp/dist/notify/index",
              "van-tabbar": "./wxcomponents/@vant/weapp/dist/tabbar/index",
             "van-tabbar-item": "./wxcomponents/@vant/weapp/dist/tabbar-item/index",
-            "van-tag": "./wxcomponents/@vant/weapp/dist/tag/index"
+            "van-tag": "./wxcomponents/@vant/weapp/dist/tag/index",
+             "van-tab": "./wxcomponents/@vant/weapp/dist/tab/index",
+             "van-tabs": "./wxcomponents/@vant/weapp/dist/tabs/index"
 		}
 	}
 }
