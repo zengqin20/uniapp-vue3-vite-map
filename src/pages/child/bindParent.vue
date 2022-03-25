@@ -3,9 +3,16 @@
 
   <view v-if="isMessage" class="users">
     <text class="bind-text">已绑定用户</text>
-    <van-tag class="bind-user" size="large" round color="#fff" text-color="#8c7070">{{
-      nickName
-    }}</van-tag>
+    <van-tag
+      class="bind-user"
+      size="large"
+      round
+      color="#fff"
+      text-color="#8c7070"
+      v-for="row in names"
+    >
+      {{ row }}</van-tag
+    >
     <text class="iconfont icon-tianjia"></text>
   </view>
 
@@ -71,14 +78,14 @@ const phone = ref('')
 const phoneError = ref('')
 const nameError = ref('')
 const userError = ref('')
-const nickName = ref('')
+const names = ref([])
 const isMessage = ref(false)
 
 const getInfo = () => {
   isMessage.value = false
   getApi(api.bindParent).then(res => {
     if (res.data.isBind) {
-      nickName.value = res.data.nickName
+      names.value = res.data.nickName
       isMessage.value = true
     }
   })
@@ -173,7 +180,7 @@ page {
   display: flex;
   align-items: center;
   .bind-user {
-    margin: 0 20px 0 36px;
+    margin-left: 16px;
   }
   .iconfont {
     font-size: 6vw;
