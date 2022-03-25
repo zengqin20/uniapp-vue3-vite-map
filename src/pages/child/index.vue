@@ -18,7 +18,7 @@ import { ref, onMounted } from 'vue'
 import { onLoad } from '@dcloudio/uni-app'
 import { api, getApi, postApi } from '@/request/index.js'
 import history from '@/pages/child/history'
-import sync from '@/pages/child/sync/index'
+import sync from '@/pages/child/sync'
 import location from '@/pages/child/location'
 import bindParent from '@/pages/child/bindParent'
 
@@ -35,7 +35,7 @@ onLoad(e => {
 })
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 page {
   color: black;
 }

@@ -24,6 +24,8 @@
 
 <script setup>
 import { ref } from 'vue'
+import { onLoad } from '@dcloudio/uni-app'
+
 import { useLocationStore } from '@/store/location.js'
 import searchMessage from '@/components/searchMessage'
 import { api, postApi } from '@/request/index.js'
@@ -31,6 +33,7 @@ import { api, postApi } from '@/request/index.js'
 const isMask = ref(false)
 const inputValue = ref('')
 const keywordArr = ref([])
+const name = ref('')
 
 const handleAddress = data => {
   inputValue.value = data.address
@@ -60,6 +63,7 @@ const changeValue = e => {
 const handleAddHome = () => {
   postApi(api.syncAddress, {
     address: inputValue.value,
+    nickName: name.value,
   }).then(res => {
     if (res.data.addAddress) {
       uni.navigateTo({
@@ -68,6 +72,12 @@ const handleAddHome = () => {
     }
   })
 }
+
+onLoad(e => {
+  if (e.name) {
+    name.value = e.name
+  }
+})
 </script>
 
 <style lang="less">
