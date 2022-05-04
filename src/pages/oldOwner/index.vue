@@ -31,7 +31,9 @@
     <view class="buses" v-if="isMessage">
       <bus-message :source-data="busData" :visible="isMessage"></bus-message>
     </view>
+    <alarm-button></alarm-button>
   </view>
+  <van-toast id="van-toast" />
 </template>
 
 <script setup>
@@ -40,6 +42,7 @@ import { ref, watch, onMounted } from 'vue'
 import { api, getApi } from '@/request/index.js'
 import busMessage from '@/components/busMessage'
 import { useLocationStore } from '@/store/location.js'
+import alarmButton from '@/components/alarmButton'
 
 // pinia
 const locationStore = useLocationStore()
@@ -222,5 +225,7 @@ page {
   .down-icon {
     font-size: 10vw;
   }
+}
+.alert-button {
 }
 </style>

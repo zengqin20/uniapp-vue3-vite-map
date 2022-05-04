@@ -118,6 +118,7 @@
             "van-radio": "./wxcomponents/@vant/weapp/dist/radio/index",
             "van-radio-group": "./wxcomponents/@vant/weapp/dist/radio-group/index",
             "van-notify":"./wxcomponents/@vant/weapp/dist/notify/index",
+            "van-toast":"./wxcomponents/@vant/weapp/dist/toast/index",
              "van-tabbar": "./wxcomponents/@vant/weapp/dist/tabbar/index",
             "van-tabbar-item": "./wxcomponents/@vant/weapp/dist/tabbar-item/index",
             "van-tag": "./wxcomponents/@vant/weapp/dist/tag/index",
